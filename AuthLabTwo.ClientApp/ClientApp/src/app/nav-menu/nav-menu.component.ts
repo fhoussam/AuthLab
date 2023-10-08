@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AuthService, UserProfile } from '../auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-nav-menu',
@@ -14,7 +15,10 @@ export class NavMenuComponent implements OnInit {
   user: UserProfile | null = null;
 
   urlSafe: SafeResourceUrl = {};
-  constructor(private sanitizer: DomSanitizer, private auth: AuthService) {
+  constructor(private sanitizer: DomSanitizer, private auth: AuthService, private cookieService: CookieService) {
+
+    this.auth.trySetUserProfileFromCookie();
+
     this.auth.user.subscribe(x => {
       console.log("user profile from nav", x?.name);
       this.user = x;

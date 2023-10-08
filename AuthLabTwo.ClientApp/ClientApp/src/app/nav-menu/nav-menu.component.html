@@ -30,7 +30,7 @@
           <li *ngIf="!user" class="nav-item" style="cursor:pointer">
             <a class="nav-link text-dark" (click)="toggleLoginModal(true)">Login</a>
           </li>
-          <li class="nav-item" style="cursor:pointer">
+          <li *ngIf="user" class="nav-item" style="cursor:pointer">
             <a class="nav-link text-dark">Hello {{user?.name}}</a>
           </li>
         </ul>

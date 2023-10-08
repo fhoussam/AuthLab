@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 export class UserProfile {
   name: string;
@@ -28,9 +29,17 @@ export class AuthService {
     private http: HttpClient,
     @Inject('API_BASE_URL') apiBaseUrl: string,
     @Inject('BASE_URL') baseUrl: string,
+    private cookieService: CookieService
   ) {
     this.apiBaseUrl = apiBaseUrl;
     this.baseUrl = baseUrl;
+  }
+
+  public trySetUserProfileFromCookie() {
+    let jsonUserProfile = this.cookieService.get('userProfile');
+    if (!jsonUserProfile) return;
+    const userProfile = JSON.parse(jsonUserProfile);
+    this.user.next(userProfile);
   }
 
   public authenticateUser(redirect: string): void {
