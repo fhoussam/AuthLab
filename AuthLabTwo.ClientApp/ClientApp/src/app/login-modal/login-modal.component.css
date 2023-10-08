@@ -1,0 +1,43 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 50;
+}
+
+.alert-box {
+  position: fixed;
+  top: 5vh;
+  left: 15vw;
+  width: 70vw;
+  z-index: 100;
+  background: white;
+  box-shadow: 0 2px 8px rbga(0, 0, 0, 0.26);
+}
+
+/*duplicated*/
+.trz-header {
+  width: 100%;
+  background-color: #99a8a9;
+  height: 60px;
+  padding: 11px;
+  font-size: 22px;
+}
+
+  .trz-header.active, .trz-header:hover {
+    background-color: #808b8c;
+  }
+
+.trz-title {
+  display: inline-block;
+  width: 80%;
+  vertical-align: middle
+}
+
+.trz-title-action {
+  display: inline-block;
+  float: right;
+}
