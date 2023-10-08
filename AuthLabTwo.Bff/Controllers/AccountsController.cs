@@ -1,4 +1,5 @@
 ﻿
+using IdentityModel;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -45,7 +46,7 @@ namespace AuthLabOne.Bff.Controllers
             var userInfo = new UserResponseDto()
             {
                 Id = Guid.NewGuid().ToString(),
-                Name = "Maximum Armor",
+                Name = User.Claims.SingleOrDefault(x => x.Type == JwtClaimTypes.Name).Value,
                 Role = "Admin"
             };
 

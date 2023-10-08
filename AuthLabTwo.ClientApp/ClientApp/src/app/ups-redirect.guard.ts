@@ -20,6 +20,7 @@ export class UpsRedirectGuard implements CanActivate {
     const requestedRoute = state.url;
 
     const inIframe = window.self !== window.top;
+
     if (requestedRoute.endsWith('/ups')) {
       if (inIframe) {
         window!.top!.location.href = 'https://localhost:44450/home/ups';
